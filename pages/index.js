@@ -60,6 +60,8 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [state, setState] = useState("IDLE");
   const [errorMsg, setErrorMsg] = useState(null);
+  //set state and error msg of MUI button^^
+  //checks the state of the textfield onChange
 
   const subscribe = async ()=>{
     setState("LOADING");
@@ -72,7 +74,7 @@ export default function Home() {
       setState("ERROR");
     }
   }
-
+  //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
     AOS.init({});
   }, []);
