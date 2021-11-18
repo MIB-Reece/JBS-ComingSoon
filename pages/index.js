@@ -58,22 +58,19 @@ width: 100vw;
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [state, setState] = useState("IDLE");
   const [errorMsg, setErrorMsg] = useState(null);
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
-
-  const subscribe = async ()=>{
-    setState("LOADING");
-    setErrorMsg(null);
-    try{
-      const response = await axios.post("/api/newsletter", {email})
-      setState("VALID")
-    } catch(e){
-      setErrorMsg(e.response.data.error);
-      setState("ERROR");
+  // let checkEmail=(/$|.+@.+..+/).email ? "" : "real email required."
+  const validateEmail =(e)=>{
+    e.value
+    setEmail=(value);
+    setErrorMsg=({email:""});
+    let validEmail= new RegExp(/$|.+@.+..+/).test(value);
+    if(!validEmail){
+      setErrorMsg({email: "real email required." })
     }
-  }
+  };
   //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
     AOS.init({});
@@ -154,7 +151,9 @@ export default function Home() {
                 autoComplete="email"
                 autoFocus
                 variant="outlined"
-                value={email} onChange={(e)=> setEmail(e.target.value)}
+                value={email} onChange={validateEmail}
+                error={Boolean(errorMsg?.email)}
+                helperText={(errorMsg?.email)}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
