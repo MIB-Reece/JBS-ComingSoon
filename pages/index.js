@@ -62,10 +62,10 @@ export default function Home() {
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
   // let checkEmail=(/$|.+@.+..+/).email ? "" : "real email required."
-  const validateEmail =(e)=>{
-    e.value
+  const validateEmail =(event)=>{
+    const {target: { value }} = event;
+    setErrorMsg=({email:""})
     setEmail=(value);
-    setErrorMsg=({email:""});
     let validEmail= new RegExp(/$|.+@.+..+/).test(value);
     if(!validEmail){
       setErrorMsg({email: "real email required." })
@@ -144,7 +144,6 @@ export default function Home() {
                 Get notified when we launch site
               </div>
               <TextField
-                required
                 id="email"
                 label="Email Address"
                 name="email"
@@ -152,6 +151,7 @@ export default function Home() {
                 autoFocus
                 variant="outlined"
                 value={email} onChange={validateEmail}
+                required
                 error={Boolean(errorMsg?.email)}
                 helperText={(errorMsg?.email)}
               />
