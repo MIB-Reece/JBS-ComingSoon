@@ -58,7 +58,7 @@ width: 100vw;
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState(null);
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
   const validateEmail =(event)=>{
@@ -151,7 +151,7 @@ export default function Home() {
                 variant="outlined"
                 value={email} onChange={validateEmail}
                 required
-                error={Boolean(validEmail)}
+                error={Boolean(errorMsg)}
                 helperText={setErrorMsg}
               />
             </Grid>
