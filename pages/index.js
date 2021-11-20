@@ -67,7 +67,7 @@ export default function Home() {
     setEmail(value);
     let validEmail= new RegExp(/$|.+@.+..+/).test(value)
     if(!validEmail){
-      setErrorMsg(errorMsg: 'real email required.')
+      setErrorMsg(errorMsg:'real email required.')
     }
   };
   //useEffect Animate On Scroll 'AOS'
@@ -151,7 +151,7 @@ export default function Home() {
                 variant="outlined"
                 value={email} onChange={validateEmail}
                 required
-                error={Boolean(errorMsg?.email)}
+                error={Boolean(setErrorMsg?.errorMsg)}
                 helperText={errorMsg}
               />
             </Grid>
