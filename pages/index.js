@@ -63,7 +63,7 @@ export default function Home() {
   //checks the state of the textfield onChange
   // let checkEmail=(/$|.+@.+..+/).email ? "" : "real email required."
   const validateEmail =(event)=>{
-    const {target: { value }} = event;
+    const {target: { value }} = event
     setErrorMsg=({email:""})
     setEmail=(value);
     let validEmail= new RegExp(/$|.+@.+..+/).test(value);
