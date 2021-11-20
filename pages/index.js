@@ -63,11 +63,11 @@ export default function Home() {
   //checks the state of the textfield onChange
   const validateEmail =(event)=>{
     const {target: { value }} = event;
-    setErrorMsg("")
+    setErrorMsg({email :''})
     setEmail(value);
     let validEmail= new RegExp(/$|.+@.+..+/).test(value)
     if(!validEmail){
-      setErrorMsg("real email required.")
+      setErrorMsg('real email required.')
     }
   };
   //useEffect Animate On Scroll 'AOS'
