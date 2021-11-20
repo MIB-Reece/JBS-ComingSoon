@@ -158,7 +158,7 @@ export default function Home() {
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
               <Button
-                onClick={subscribe}
+                
                 type="submit"
                 size="large"
                 variant="contained"
