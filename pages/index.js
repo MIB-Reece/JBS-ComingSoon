@@ -56,13 +56,13 @@ width: 100vw;
   }
 `;
 
-export default function Home() {
-  const [email, setEmail] = useState("");
-  const [errorMsg, setErrorMsg] = useState(null);
+export default function Home(voidEmail) {
+  const [email, setEmail] = useState(voidEmail);
+  const [errorMsg, setErrorMsg] = useState({});
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
-  const validateEmail =(event)=>{
-    const {target: { value }} = event;
+  const validateEmail = e =>{
+    const { value } = e.target
     errorMsg(setErrorMsg)
     setEmail(value);
     let validEmail= new RegExp(/$|.+@.+..+/).test(value)
