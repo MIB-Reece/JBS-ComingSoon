@@ -58,16 +58,16 @@ width: 100vw;
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [errorMsg, setErrorMsg] = useState(email);
+  const [errorMsg, setErrorMsg] = useState("");
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
   const validateEmail =(event)=>{
     const {target: { value }} = event;
-    setErrorMsg({email:""})
+    setErrorMsg("")
     setEmail(value);
     let validEmail= new RegExp(/$|.+@.+..+/).test(value)
     if(!validEmail){
-      setErrorMsg({email: "real email required." })
+      setErrorMsg("real email required.")
     }
   };
   //useEffect Animate On Scroll 'AOS'
