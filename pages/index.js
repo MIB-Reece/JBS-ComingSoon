@@ -58,7 +58,7 @@ width: 100vw;
 
 export default function Home() {
   const [email, setEmail] = useState("");
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(email);
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
   // let checkEmail=(/$|.+@.+..+/).email ? "" : "real email required."
