@@ -151,7 +151,7 @@ export default function Home() {
                 variant="outlined"
                 value={email} onChange={validateEmail}
                 required
-                error={errorMsg}
+                error={Boolean(setErrorMsg)}
                 helperText={errorMsg.email}
               />
             </Grid>
