@@ -152,7 +152,7 @@ export default function Home() {
                 value={email} onChange={validateEmail}
                 required
                 error={Boolean(errorMsg)}
-                helperText={setErrorMsg}
+                helperText={errorMsg}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
