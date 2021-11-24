@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import {
   Grid,
   CssBaseline,
@@ -61,15 +62,8 @@ export default function Home() {
   const [errorMsg, setErrorMsg] = useState(email);
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
-  const validateEmail = e =>{
-    const { value } = e.target
-    errorMsg(setErrorMsg)
-    setEmail(value);
-    let validEmail= new RegExp(/$|.+@.+..+/).test(value)
-    if(!validEmail){
-      setErrorMsg('real email required.')
-    }
-  };
+  const { handleSubmit, register, control} = useForm();
+  const onSubmit = (data) => console.log(data);
   //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
     AOS.init({});
@@ -124,12 +118,16 @@ export default function Home() {
               most relatable and powerful stories.
             </h5>
           </div>
+          
           <Grid
             container
             justifyContent="center"
             alignItems="center"
             className="emailForm"
           >
+          <form>
+            <Controller name={"emailInput"} control={control} 
+            render={({ field: { onChange, value } }) => (
             <Grid
               item
               xs={6}
@@ -144,20 +142,21 @@ export default function Home() {
               </div>
               <TextField
                 id="email"
-                label="Email Address"
+                label={"Email Address"}
                 name="email"
                 autoComplete="email"
                 autoFocus
                 variant="outlined"
-                value={email} onChange={validateEmail}
+                value={value} onChange={onChange}
                 required
                 error={Boolean(errorMsg?.email)}
                 helperText={errorMsg}
               />
             </Grid>
+            )}/>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
               <Button
-                
+                onClick={handleSubmit(onSubmit)}
                 type="submit"
                 size="large"
                 variant="contained"
@@ -166,8 +165,9 @@ export default function Home() {
                 Subscribe
               </Button>
             </Grid>
+          </form>
           </Grid>
-
+          
           <BottomNavigation align-self="flex-end">
             <BottomNavigationAction
               href="https://www.facebook.com/JumpButtonStudio/"
