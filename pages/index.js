@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 import {
   Grid,
   CssBaseline,
@@ -55,11 +57,16 @@ width: 100vw;
     object-fit: cover;
   }
 `;
+const schema = yup.object({
+  email: yup.string().email().required(),
+}).required();
 
 export default function Home() {
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
-  const { handleSubmit, register, control} = useForm();
+  const { handleSubmit, control, register, formState:{errors}} = useForm({
+    resolver: yupResolver(schema)
+  });
   const onSubmit = (data) => console.log(data);
   //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
@@ -144,7 +151,7 @@ export default function Home() {
                 autoFocus
                 variant="outlined"
                 value={value} onChange={onChange}
-                required
+                required error
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
