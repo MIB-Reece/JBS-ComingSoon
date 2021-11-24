@@ -15,7 +15,6 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import axios from 'axios';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -124,7 +123,8 @@ export default function Home() {
             className="emailForm"
           >
           <form>
-            <Controller name={"emailInput"} control={control} 
+            <Controller name={"emailInput"} control={control}
+            render={({ field: { onChange, value } }) => (
             <Grid
               item
               xs={6}
@@ -148,7 +148,6 @@ export default function Home() {
                 required
               />
             </Grid>
-            
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
               <Button
                 onClick={handleSubmit(onSubmit)}
@@ -159,7 +158,7 @@ export default function Home() {
               >
                 Subscribe
               </Button>
-            </Grid>
+            </Grid> )}/>
           </form>
           </Grid>
           
