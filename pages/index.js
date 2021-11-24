@@ -115,16 +115,15 @@ export default function Home() {
               most relatable and powerful stories.
             </h5>
           </div>
-          
+          <form>
+          <Controller name={"emailInput"} control={control}
+            render={({ field: { onChange, value } }) => (
           <Grid
             container
             justifyContent="center"
             alignItems="center"
             className="emailForm"
           >
-          <form>
-            <Controller name={"emailInput"} control={control}
-            render={({ field: { onChange, value } }) => (
             <Grid
               item
               xs={6}
@@ -158,10 +157,9 @@ export default function Home() {
               >
                 Subscribe
               </Button>
-            </Grid> )}/>
+            </Grid>
+          </Grid> )}/>
           </form>
-          </Grid>
-          
           <BottomNavigation align-self="flex-end">
             <BottomNavigationAction
               href="https://www.facebook.com/JumpButtonStudio/"
