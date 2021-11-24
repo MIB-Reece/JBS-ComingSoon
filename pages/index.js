@@ -125,7 +125,6 @@ export default function Home() {
           >
           <form>
             <Controller name={"emailInput"} control={control} 
-            render={({ field: { onChange, value } }) => (
             <Grid
               item
               xs={6}
@@ -149,7 +148,7 @@ export default function Home() {
                 required
               />
             </Grid>
-            )}/>
+
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
               <Button
                 onClick={handleSubmit(onSubmit)}
