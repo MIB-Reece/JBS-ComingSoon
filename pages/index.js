@@ -58,8 +58,6 @@ width: 100vw;
 `;
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [errorMsg, setErrorMsg] = useState(email);
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
   const { handleSubmit, register, control} = useForm();
