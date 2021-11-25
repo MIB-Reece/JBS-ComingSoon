@@ -149,9 +149,9 @@ export default function Home() {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                variant="outlined"
+                variant="outlined" ref={register}
                 value={value} onChange={onChange}
-                required error
+                required error={errors.email?.message}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
