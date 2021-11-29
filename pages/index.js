@@ -64,10 +64,15 @@ export default function Home() {
   const { handleSubmit, control, register, formState:{errors}} = useForm({
     resolver: yupResolver(schema)
   });
+
+  //yup email validation schema
   const schema = yup.object({
     email: yup.string().email().required(),
   }).required();
+
+  //action onSubmit Subscribe button, uploads the data
   const onSubmit = (data) => console.log(data);
+
   //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
     AOS.init({});
@@ -124,7 +129,7 @@ export default function Home() {
           </div>
           <form>
           <Controller name={"emailInput"} control={control}
-            render={({ field: { onChange, value } }) => (
+            render={({ field }) => (
           <Grid
             container
             justifyContent="center"
@@ -144,14 +149,14 @@ export default function Home() {
                 Get notified when we launch site
               </div>
               <TextField
+                {...field}
                 id="email"
-                label={"Email Address"}
+                label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
                 variant="outlined" ref={register}
-                value={value} onChange={onChange}
-                required error={errors.email?.message}
+                required
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
