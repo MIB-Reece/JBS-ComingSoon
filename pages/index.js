@@ -57,9 +57,6 @@ width: 100vw;
     object-fit: cover;
   }
 `;
-const schema = yup.object({
-  email: yup.string().email().required(),
-}).required();
 
 export default function Home() {
   //set state and error msg of MUI button^^
@@ -67,6 +64,9 @@ export default function Home() {
   const { handleSubmit, control, register, formState:{errors}} = useForm({
     resolver: yupResolver(schema)
   });
+  const schema = yup.object({
+    email: yup.string().email().required(),
+  }).required();
   const onSubmit = (data) => console.log(data);
   //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
