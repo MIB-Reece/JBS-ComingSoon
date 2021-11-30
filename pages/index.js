@@ -61,10 +61,9 @@ width: 100vw;
 export default function Home() {
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
-  const { handleSubmit, control, register, formState:{errors}} = useForm({
-    resolver: yupResolver(schema)
-  });
-
+  const formOptions = { resolver: yupResolver(schema)};
+  const { handleSubmit, control, register } = useForm(formOptions);
+  const { errors } = formState;
   //yup email validation schema
   const schema = yup.object({
     email: yup.string().email().required(),
@@ -156,7 +155,8 @@ export default function Home() {
                 autoComplete="email"
                 autoFocus
                 variant="outlined" ref={register}
-                required
+                required error={errors.email ? 'is-invalid' : ''}
+                helperText={errors.email?.message}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
