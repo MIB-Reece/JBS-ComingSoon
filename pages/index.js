@@ -149,12 +149,13 @@ export default function Home() {
               </div>
               <TextField
                 {...field}
+                {...register('email')}
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
-                variant="outlined" ref={register}
+                variant="outlined"
                 required error={errors.email ? 'is-invalid' : ''}
                 helperText={errors.email?.message}
               />
