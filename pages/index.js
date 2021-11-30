@@ -65,8 +65,8 @@ export default function Home() {
   const { handleSubmit, control, register } = useForm(formOptions);
   const { errors } = formState;
   //yup email validation schema
-  const schema = yup.object({
-    email: yup.string().email().required(),
+  const schema = Yup.object({
+    email: Yup.string().email().required(),
   }).required();
 
   //action onSubmit Subscribe button, uploads the data
