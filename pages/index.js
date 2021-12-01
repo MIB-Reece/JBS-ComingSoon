@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers';
-import * as Yup from 'yup';
 import {
   Grid,
   CssBaseline,
@@ -61,14 +59,9 @@ width: 100vw;
 export default function Home() {
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
-  const formOptions = { resolver: yupResolver(schema)};
-  const { handleSubmit, control, register } = useForm(formOptions);
+  const { handleSubmit, control, register } = useForm();
   const { errors } = formState;
-  //yup email validation schema
-  const schema = Yup.object({
-    email: Yup.string().email().required(),
-  }).required();
-
+ 
   //action onSubmit Subscribe button, uploads the data
   const onSubmit = (data) => console.log(data);
 
@@ -149,7 +142,8 @@ export default function Home() {
               </div>
               <TextField
                 {...field}
-                {...register('email')}
+                {...register("Email", 
+                {required: true, pattern: /^\S+@\S+$/i})}
                 id="email"
                 label="Email Address"
                 name="email"
