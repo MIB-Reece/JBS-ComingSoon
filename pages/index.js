@@ -59,8 +59,7 @@ width: 100vw;
 export default function Home() {
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
-  const { handleSubmit, control, register } = useForm();
-  const { errors } = formState;
+  const { handleSubmit, control, register, formState:{errors}} = useForm();
  
   //action onSubmit Subscribe button, uploads the data
   const onSubmit = (data) => console.log(data);
