@@ -158,8 +158,7 @@ export default function Home() {
                 Get notified when we launch site
               </div>
               <TextField
-                {...field}
-                {...register("Email", 
+                {...field(
                 {required: true, pattern: /^\S+@\S+$/i})}
                 id="email"
                 label="Email Address"
