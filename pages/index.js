@@ -57,12 +57,30 @@ width: 100vw;
 `;
 
 export default function Home() {
+  const [email, setEmail] = useState('')
+  const [state, setState] = useState('idle')
+  const [errorMsg, setErrorMsg] = useState(null)
+
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
   const { handleSubmit, control, register, formState:{errors}} = useForm();
  
   //action onSubmit Subscribe button, uploads the data
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data, e) => {console.log(data);
+    e.preventDefault()
+    setState('Loading')
+
+    try {
+      const response = await axios.post('/api/subscribe', { email })
+      console.log(response)
+      setState('Success')
+      setEmail('')
+    } catch (e) {
+      console.log(e.response.data.error)
+      setErrorMsg(e.response.data.error)
+      setState('Error')
+    }
+  }
 
   //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
@@ -118,7 +136,7 @@ export default function Home() {
               most relatable and powerful stories.
             </h5>
           </div>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
           <Controller name={"emailInput"} control={control}
             render={({ field }) => (
           <Grid
@@ -146,10 +164,10 @@ export default function Home() {
                 id="email"
                 label="Email Address"
                 autoComplete="email"
-                autoFocus
+                autoFocus required
                 variant="outlined"
-                error={errors.email ? 'is-invalid' : ''}
-                helperText={errors.email?.message}
+                error={Boolean(errorMsg)}
+                helperText={errorMsg}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
