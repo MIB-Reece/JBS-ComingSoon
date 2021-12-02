@@ -166,8 +166,8 @@ export default function Home() {
                 autoComplete="email"
                 autoFocus required
                 variant="outlined"
-                error={Boolean(errorMsg)}
-                helperText={errorMsg}
+                error={errors.email ? 'is-invalid' : ''}
+                helperText={errors.email?.message}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
