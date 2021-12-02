@@ -67,6 +67,7 @@ export default function Home() {
  
   //action onSubmit Subscribe button, uploads the data
   const onSubmit = async (errors,data, e) => {console.log(data);
+    console.log(errors);
     e.preventDefault()
     setState('Loading')
 
