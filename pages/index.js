@@ -161,7 +161,7 @@ export default function Home() {
                 autoComplete="email"
                 autoFocus required
                 variant="outlined"
-                error={errors}
+                error={errors.email?}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
