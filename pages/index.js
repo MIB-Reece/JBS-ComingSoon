@@ -17,7 +17,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Axios from 'axios';
+import axios from 'axios';
 
 export const Status = {
   idle: "IDLE",
