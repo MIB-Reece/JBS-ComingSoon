@@ -76,8 +76,8 @@ export default function Home() {
       setState('Success')
       setEmail('')
     } catch (e) {
-      console.log(e.response.data.error)
-      setErrorMsg(e.response.data.error)
+      console.log(errors)
+      setErrorMsg(errors)
       setState('Error')
     }
   }
