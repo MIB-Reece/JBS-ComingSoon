@@ -71,7 +71,6 @@ export default function Home() {
     try {
       const response = await axios.post('/api/mailchimp', { email })
       console.log(response)
-      setState('Success')
       setEmail('')
     } catch {
       console.log(errors, e);
@@ -156,13 +155,13 @@ export default function Home() {
               <TextField
                 {...field}
                 {...register("email",
-                {required: true, pattern: /^\S+@\S+$/i})}
+                {required: true, pattern: /^\S+@.+\S+$/i})}
                 id="email"
                 label="Email Address"
                 autoComplete="email"
                 autoFocus required
                 variant="outlined"
-                error={errors.email ? 'is-invalid' : ''}
+                error={errors}
               />
             </Grid>
             <Grid item xs={6} sm={1} gap={{ xs: 0.5 }} flexDirection="column">
