@@ -17,6 +17,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Axios from 'axios';
 
 const ContentDiv = styled(Box)`
 flex-direction: column;
@@ -72,7 +73,7 @@ export default function Home() {
       const response = await axios.post('/api/mailchimp', { email })
       console.log(response)
       setEmail('')
-    } catch {
+    } catch(e){
       console.log(errors, e);
     }
   }
