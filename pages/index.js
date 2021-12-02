@@ -67,7 +67,6 @@ export default function Home() {
   //action onSubmit Subscribe button, uploads the data
   const onSubmit = async (data, e) => {console.log(data);
     e.preventDefault()
-    setState('Loading')
 
     try {
       const response = await axios.post('/api/mailchimp', { email })
