@@ -58,8 +58,6 @@ width: 100vw;
 
 export default function Home() {
   const [email, setEmail] = useState('')
-  const [state, setState] = useState('idle')
-  const [errorMsg, setErrorMsg] = useState(null)
 
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
@@ -76,10 +74,8 @@ export default function Home() {
       console.log(response)
       setState('Success')
       setEmail('')
-    } catch (e) {
-      console.log(errors)
-      setErrorMsg(errors)
-      setState('Error')
+    } catch {
+      console.log(errors, e);
     }
   }
 
