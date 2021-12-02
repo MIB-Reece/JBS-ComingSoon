@@ -71,7 +71,7 @@ export default function Home() {
     setState('Loading')
 
     try {
-      const response = await axios.post('/api/subscribe', { email })
+      const response = await axios.post('/api/mailchimp', { email })
       console.log(response)
       setState('Success')
       setEmail('')
