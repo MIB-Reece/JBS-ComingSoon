@@ -64,10 +64,10 @@ export default function Home() {
   //set state and error msg of MUI button^^
   //checks the state of the textfield onChange
   const { handleSubmit, control, register, formState:{errors}} = useForm();
- 
+  
+  const onError = (errors, e) => console.log(errors, e);
   //action onSubmit Subscribe button, uploads the data
-  const onSubmit = async (errors,data, e) => {console.log(data);
-    console.log(errors);
+  const onSubmit = async (data, e) => {console.log(data);
     e.preventDefault()
     setState('Loading')
 
@@ -137,7 +137,7 @@ export default function Home() {
               most relatable and powerful stories.
             </h5>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit, onError)}>
           <Controller name={"emailInput"} control={control}
             render={({ field }) => (
           <Grid
