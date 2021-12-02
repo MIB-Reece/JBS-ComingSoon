@@ -66,7 +66,7 @@ export default function Home() {
   const { handleSubmit, control, register, formState:{errors}} = useForm();
  
   //action onSubmit Subscribe button, uploads the data
-  const onSubmit = async (data, e) => {console.log(data);
+  const onSubmit = async (errors,data, e) => {console.log(data);
     e.preventDefault()
     setState('Loading')
 
