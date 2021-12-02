@@ -145,11 +145,10 @@ export default function Home() {
                 {required: true, pattern: /^\S+@\S+$/i})}
                 id="email"
                 label="Email Address"
-                name="email"
                 autoComplete="email"
                 autoFocus
                 variant="outlined"
-                required error={errors.email ? 'is-invalid' : ''}
+                error={errors.email ? 'is-invalid' : ''}
                 helperText={errors.email?.message}
               />
             </Grid>
