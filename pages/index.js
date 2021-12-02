@@ -19,6 +19,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Axios from 'axios';
 
+export const Status = {
+  idle: "IDLE",
+  loading: "LOADING",
+  success: "SUCCESS",
+  error: "ERROR",
+};
+
 const ContentDiv = styled(Box)`
 flex-direction: column;
 width: 100vw;
@@ -58,24 +65,16 @@ width: 100vw;
 `;
 
 export default function Home() {
-  const [email, setEmail] = useState('')
 
-  //set state and error msg of MUI button^^
-  //checks the state of the textfield onChange
   const { handleSubmit, control, register, formState:{errors}} = useForm();
-  
+  //onError catches react-hook-form errors
   const onError = (errors, e) => console.log(errors, e);
   //action onSubmit Subscribe button, uploads the data
   const onSubmit = async (data, e) => {console.log(data);
     e.preventDefault()
 
-    try {
-      const response = await axios.post('/api/mailchimp', { email })
-      console.log(response)
-      setEmail('')
-    } catch(e){
-      console.log(errors, e);
-    }
+      const response = await axios.post('/api/mailchimp', {email});
+      return response;
   }
 
   //useEffect Animate On Scroll 'AOS'
