@@ -72,11 +72,11 @@ export default function Home() {
   //action onSubmit Subscribe button, uploads the data
   const onSubmit = async (data, e) => {console.log(data);
     e.preventDefault()
-
-      const response = await axios.post('/api/mailchimp', {email});
+  }
+  async function subscribe({email}){
+    const response = await axios.post('/api/mailchimp', {email});
       return response;
   }
-
   //useEffect Animate On Scroll 'AOS'
   useEffect(() => {
     AOS.init({});
